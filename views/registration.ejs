@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs") %>
+<h1>Registration Page</h1>
+
+<form action="/register" method="POST">
+    <!-- <div class="mb-3 mt-3">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div> -->
+    
+    <div class="mb-3 mt-3">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" required />
+      </div>
+    
+      <div class="mb-3">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" required />
+      </div>
+
+      <div class="mb-3 mt-3">
+        <label for="mobile">Mobile:</label>
+        <input type="text" class="form-control" id="mobile" name="mobile" required>
+
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+<a href="/">Login</a>
+<%- include("partials/footer.ejs") %>
