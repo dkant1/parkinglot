@@ -48,14 +48,16 @@ CREATE TABLE public.parking_slots (
 	FOREIGN KEY(parking_spots_row_id) REFERENCES parking_spots(row_id)
 );
 
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 DROP TABLE IF EXISTS public.bookings;
 
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 
 CREATE TABLE public.bookings (
   row_id 		SERIAL NOT NULL PRIMARY KEY,
   booking_id 	UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
-  user_id 		VARCHAR(10) NOT NULL,  
+  user_id 		VARCHAR(60) NOT NULL,  
   booking_date 	DATE NOT NULL,
   time_from 	TIME NOT NULL,
   time_to 		TIME NOT NULL,
@@ -63,7 +65,8 @@ CREATE TABLE public.bookings (
   created_at    TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   modified_at   TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   parking_spots_spot_id VARCHAR(20) NOT NULL,
-  FOREIGN KEY(parking_spots_spot_id) REFERENCES parking_spots(spot_id)
+  FOREIGN KEY(parking_spots_spot_id) REFERENCES parking_spots(spot_id),
+  FOREIGN KEY(user_id) REFERENCES users(email)
 );
 
 DROP TABLE IF EXISTS public.users;

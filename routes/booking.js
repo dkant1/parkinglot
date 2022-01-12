@@ -45,7 +45,7 @@ router.post("/", authenticateToken ,async(req,res)=>{
             
             //insert record into booking and get the booking_id
             const booking = await client.query("INSERT INTO bookings(user_id, booking_date, time_from, time_to, total_amount, parking_spots_spot_id) \
-            VALUES($1, $2, $3, $4, $5, $6) RETURNING *", ['TESTER',date, time_from, time_to, amount, spots.rows[0].spot_id] );
+            VALUES($1, $2, $3, $4, $5, $6) RETURNING *", [req.user.user,date, time_from, time_to, amount, spots.rows[0].spot_id] );
 
             // update the parking slots table with booking id and mark the is_booked flag to true for respective records
             await client.query("UPDATE parking_slots SET is_booked = true, booking_id = ($1) WHERE parking_spots_row_id = ($2) AND date = ($3) \

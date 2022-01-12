@@ -47,11 +47,12 @@ GET http://localhost:5000/api/bookings?user_id=TESTER HTTP/1.1
 ### Create a Booking
 POST http://localhost:5000/api/bookings HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidGVzdGVyQGVtYWlsLmNvbSIsImlhdCI6MTY0MTk4ODE0OCwiZXhwIjoxNjQxOTg4NDQ4fQ.kMcwufxsQWjw9rRl5A8LjefeO9grvdxrSQ-3rIzC95E
 
 {
     "date": "2021-12-28",
-    "time_from": "09:30",
-    "time_to": "10:00",
+    "time_from": "11:30",
+    "time_to": "12:00",
     "size": "small",
     "lot_id": "JY01"
 }
